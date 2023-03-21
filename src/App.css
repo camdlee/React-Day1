@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #c5eae6;
 }
 
 .App-logo {
@@ -35,4 +36,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+nav{
+  background-color: #57a0a6;
+}
+.nav-item{
+  color: #c3073f;
+}
+.navbar-collapse{
+  color: #c3073f;
+}
+
+.home{
+  background-color: #c5eae6;
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  color: #c3073f;
+  background-color:#57a0a6
 }
