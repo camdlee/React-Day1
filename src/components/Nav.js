@@ -1,31 +1,27 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Nav extends Component {
-    constructor(){
-        super()
-        this.state = {
-            
-        }
-    }
-
     render() {
     return (
     <div>        
         <nav className="navbar navbar-expand-lg navbar-light">
-            <a style={{color: '#c3073f'}} className="navbar-brand" href="#">Home</a>
+            <Link style={{color: '#c3073f'}} className="navbar-brand" to="/">
+                React App
+            </Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <a style={{color: '#c3073f'}} className="nav-link" href="#">Features</a>
+                    <Link style={{color: '#c3073f'}} className="nav-link" to="/pokesearch">PokeSearch</Link>
                 </li>
                 <li className="nav-item">
-                    <a style={{color: '#c3073f'}} className="nav-link" href="#">Header</a>
+                    <Link style={{color: '#c3073f'}} className="nav-link" to="/todolist">To Do List</Link>
                 </li>
                 <li className="nav-item">
-                <a style={{color: '#c3073f'}} className="nav-link disabled" href="#">Disabled</a>
+                <Link style={{color: '#c3073f'}} className="nav-link disabled" to="/">Disabled</Link>
                 </li>
             </ul>
             </div>

@@ -1,19 +1,33 @@
 import './App.css';
-import Footer from './Footer';
-import Home from './Home';
-import Nav from './Nav';
-import Pokesearch from './Pokesearch';
+import Footer from './components/Footer';
+import Home from './views/Home';
+import Nav from './components/Nav'
+import Pokesearch from './views/Pokesearch';
+import Toast from './components/Toast';
+import Todolist from './views/Todolist';
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
-function App() {
+import React, { Component } from 'react'
+
+
+export default class App extends Component {
+  constructor(){
+    super()
+  }
+
+  render() {
   return (
-    <div className="App">
-      <Nav/>
-      <Home/>
-      <br></br>
-      <Pokesearch/>
-      <Footer/>
-    </div>
+    <BrowserRouter>
+      <div>
+          <Nav/>
+            <Routes>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/pokesearch' element={<Pokesearch/>}/>
+              <Route path='/todolist' element={<Todolist/>}/>
+            </Routes>
+          <Footer/>
+      </div>
+    </BrowserRouter>
   );
 }
-
-export default App;
+}
