@@ -12,29 +12,36 @@ export default class Todolist extends Component {
     addItem = (event) => {
         event.preventDefault()
         const task = event.target.todo.value
-        // will make each task item a dictionary/object to hold many key-value pairs
-        const newItem = {id: Date.now(), task: task, completed: false}
 
         // will add newItem to our toDoList by doing setState and appending the list/array
-        this.setState = this.state.toDoList.append(newItem)
+        this.setState((prevList) => ({
+            toDoList: prevList.toDoList.concat(task)
+        })
+        )
     }
 
-    // creating finsih/delete task function
-    finishItem = () => {
-        // will need to change completed key in task object to true
+    // creating remove/delete task function
+    removeItem = (index) => {
+        let newList = this.state.toDoList.slice()
+        newList.splice(index, 1)
+        this.setState({toDoList:newList})
     }
 
     displayToDoList = () => {
-        return this.state.toDoList.map((item) => {
+        //map through list to show each item in array
+        return this.state.toDoList.map((item, index) => {
             return(
-                <div key={this.state.toDoList.id}>
-                    <input type="checkbox" checked={this.state.toDoList.completed} onChange={() => finishItem(this.state.toDoList.id)}/>
-                    <span>{this.state.toDoList.task}</span>
+                <div className="todolist" key={index}>
+                    <ul className="list-group">
+                        <li className="list-group-item">{item}</li>
+                        <button onClick={()=>this.removeItem(index)}>Remove</button>
+                    </ul>
                 </div>
             )
         }
         )
     }
+
 
     render() {
         return (
@@ -44,6 +51,7 @@ export default class Todolist extends Component {
                     <input name='todo' placeholder='Task'/>
                     <button>Add to list</button>
                 </form>
+                {this.displayToDoList()}
             </div>
         )
     }
